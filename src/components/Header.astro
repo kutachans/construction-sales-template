@@ -1,7 +1,4 @@
 ---
 import { company } from '../data/company';
 ---
-<header class="site-header">
-  <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">A</span><span>{company.name}<small>{company.englishName}</small></span></a>
-  <nav aria-label="メインナビゲーション"><a href="#services">事業内容</a><a href="#projects">施工事例</a><a href="#about">会社紹介</a><a class="button button-small" href="#contact">お問い合わせ <span aria-hidden="true">↗</span></a></nav>
-</header>
+<header class="site-header"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">{company.englishName.charAt(0)}</span><span>{company.name}<small>{company.englishName}</small></span></a><nav aria-label="メインナビゲーション"><a href="#services">事業内容</a><a href="#works">施工実績</a><a href="#company">会社情報</a><a class="button button-small" href="#contact">ご相談 <span aria-hidden="true">↗</span></a></nav></header>

@@ -1,4 +1,0 @@
----
-import { company } from '../data/company';
----
-<section id="projects" class="section" aria-labelledby="projects-title"><div class="section-heading"><div><p class="eyebrow">OUR WORKS</p><h2 id="projects-title">施工事例</h2></div><p>掲載内容はテンプレート用のサンプルです。<br />イラストは実際の施工写真ではありません。</p></div><div class="project-grid">{company.projects.map(project => <article class="project-card"><img src={project.image} alt={project.alt} width="900" height="680" loading="lazy" /><p class="eyebrow">{project.category}</p><h3>{project.title}</h3><p>{project.description}</p></article>)}</div></section>

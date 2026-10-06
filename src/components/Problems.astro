@@ -1,0 +1,4 @@
+---
+import { company } from '../data/company';
+---
+<section class="section problems" aria-labelledby="problems-title"><div><p class="eyebrow">BUILDING CONDITION</p><h2 id="problems-title">こんな症状はありませんか？</h2></div><ul>{company.problems.map(problem => <li><span aria-hidden="true">＋</span>{problem}</li>)}</ul></section>

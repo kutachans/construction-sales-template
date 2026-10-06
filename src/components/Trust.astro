@@ -1,0 +1,4 @@
+---
+import { company } from '../data/company';
+---
+<section class="trust" aria-label="会社の特徴"><ul>{company.trust.map(item => <li><span class="eyebrow">{item.label}</span><strong>{item.text}</strong></li>)}</ul></section>

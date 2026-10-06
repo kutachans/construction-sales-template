@@ -1,18 +1,15 @@
 # 建設業向け営業サイト マスターテンプレート
 
-Astro + TypeScript + SCSS の静的サイトです。防水工事会社向けのサンプルを同梱し、会社情報・サービス・施工事例を差し替えて横展開できます。JavaScript に依存しないナビゲーションと FAQ を採用しています。
+Astro + TypeScript + SCSS の静的サイトです。第1号デモは「有限会社昭和防水工事」を想定した Web 制作提案用です。同社の公式サイトではありません。
 
 ## インストール・起動
 
-Node.js 24 LTS 推奨（最低 22.12.0）、npm 9.6.5 以上を使用します。
+Node.js 24 LTS 推奨（最低 22.12.0）、npm 9.6.5 以上。
 
 ```sh
-cd construction-sales-template
-npm install
+npm ci
 npm run dev -- --host 0.0.0.0
 ```
-
-通常のローカル開発では開発サーバーの案内に従って表示します。ロックファイルから再現する場合や CI では `npm ci` を使用してください。
 
 ```sh
 npm run check
@@ -20,33 +17,46 @@ npm run build
 npm run preview -- --host 0.0.0.0
 ```
 
-`check` は Astro と TypeScript の型チェック、`build` は静的ページの生成です。成果物は `dist/` に出力されます。自動テストスイートは未同梱です。公開先を設定してビルドする例：
+`check` は Astro と TypeScript の型チェック、`build` は静的ページ生成です。成果物は `dist/` です。自動テストスイートは未同梱です。バックエンドや秘密情報は不要です。
 
-```sh
-SITE_URL=https://www.your-company.jp npm run build
-```
+## 構成
 
-`SITE_URL` は canonical と Open Graph の URL に使われます。未指定時は `https://example.com` です。秘密情報は不要です。お問い合わせは電話・メールのリンク方式で、フォーム送信サーバーはありません。
+- `src/data/company.ts`：会社固有情報、Hero、許可・特徴、サービス、実績、症状、法人向け対象例、デモ注意書き
+- `src/components/`：Header → Hero → Trust → About → Services → Works → Problems → Corporate → Area → Company → ContactCTA → Footer
+- `src/layouts/DemoLayout.astro`：共通メタ情報と `noindex,nofollow`
+- `src/pages/index.astro`：セクションの組み立て
+- `src/styles/global.scss`：紺色系配色とレスポンシブレイアウト
 
-## ファイル構成
+Process / FAQ と旧架空会社データは削除しています。施工写真は未設定で、実際の写真と混同しないプレースホルダーを表示します。
 
-- `src/data/company.ts`：型定義、会社情報、連絡先、サービス、強み、施工事例、工事の流れ、FAQ
-- `src/components/`：Header / Hero / Services / Strengths / Projects / Process / Faq / About / Contact / Footer
-- `src/pages/index.astro`：ページ構成、タイトル、SEO メタ情報
-- `src/styles/global.scss`：色、余白、レスポンシブレイアウト
-- `public/images/`：同梱のオリジナル SVG イラスト（実際の施工写真ではありません）
-- `astro.config.mjs`：静的出力とサイト URL
+## 情報の取り扱い
+
+会社名、所在地、事業種類、許可表記、かえで会館の工事情報は今回ユーザーから指定された情報です。このリポジトリに出典 URL は未収録で、独立した公開情報の照合は実施していません。提案前に最新の出典と表記を確認してください。未確認の電話・メール・営業時間は `null` です。保証、資格、施工件数、顧客の声、アフターケア、架空の実績は追加していません。法人向けの建物一覧は対象例であり、施工実績ではありません。
 
 ## 別会社への横展開
 
-1. GitHub の設定で Template repository を有効化し、Use this template から別リポジトリを作成するか、本リポジトリを複製します。案件ごとの会社情報をマスターへ上書きしない運用を推奨します。
-2. `src/data/company.ts` の全項目を実際の会社情報に変更します。`contact.phone` は表示用電話番号、`contact.email` はメールアドレスです。`null` の項目はリンクを表示しません。
-3. サービス・対応エリア・施工事例・FAQ・営業時間を確認します。強みやアフターケアの文章も実際の提供範囲に合わせてください。施工事例の画像を `public/images/` に追加し、`image` と `alt` を更新します。
-4. サンプル表記を取り除きます。`About.astro` の会社名に付く「サンプル」、`Projects.astro` の説明、データ内のサンプル文言を確認してください。未提供の実績・保証・資格を掲載しないでください。
-5. `Header.astro` のブランドマーク、`public/favicon.svg`、`global.scss` の色を変更します。業種に合わせて `index.astro` のタイトルも変更します。フォントは端末の日本語フォントを使い、外部フォントの通信はありません。
-6. 公開先の `SITE_URL` を設定し、型チェック・ビルドを実行します。スマートフォン表示、キーボード操作、FAQ、電話・メールのリンク、画像代替テキストを確認します。
-7. `dist/` を静的ホスティングへ配置します。公開やホスティング設定はこの初期構成には含みません。
+1. GitHub の Template repository を有効にして別リポジトリを作るか、複製してください。マスターに案件ごとの変更を上書きしない運用を推奨します。
+2. `src/data/company.ts` の会社名、英語表記、住所、説明、対応エリア、注意書きを差し替えます。防水・塗装・屋根・外装・リフォーム業に応じて `services` と `problems` を編集します。
+3. `trust` はその会社で確認できた情報だけに変更してください。未確認の許可・実績は引き継がないでください。`works` に確認済み実績を追加し、未掲載枠は `COMING SOON` のままにします。
+4. 写真は使用権と内容を確認して `public/images/` に置き、`heroImage` または各実績の `image` に `{ src: '/images/file.jpg', alt: '写真の説明' }` を設定します。未設定時は `null` としてください。Hero は大きな写真を表示できる構成です。
+5. `contact.phone`、`contact.email`、`businessHours` は確認できた場合のみ設定します。`null` の連絡先リンク・会社情報欄は表示しません。提案デモの ContactCTA は問い合わせ受付をしない旨を表示します。
+6. 型チェック・ビルド後、PC・スマートフォン、ページ内リンク、画像、キーボード操作を確認します。
 
-## クラウド開発
+全ページで `DemoLayout` を使い、`<meta name="robots" content="noindex,nofollow">` と Footer の注意書きを維持してください。canonical・sitemap は生成しません。`noindex` はアクセス制限ではありません。公式サイトへ転用する場合は別途、情報の確定、連絡先、問い合わせ機能、SEO・公開設定を見直してください。
 
-既存の `/workspace/construction-sales-template` を使用してください。各タスクは隔離されているため、追加の Git worktree は不要です。npm の既定キャッシュが書き込み不可の場合は `npm --cache /tmp/construction-npm-cache ci` を使用できます。Astro のユーザー設定ディレクトリが書き込み不可の場合は、各 Astro コマンドに `ASTRO_TELEMETRY_DISABLED=1` を付けて実行してください。実行中の開発サーバーは新しいタスクへ引き継がれないため、必要なときに起動してください。
+## 配色
+
+Primary `#102A43` / Secondary `#334E68` / Accent `#4D7899` / Background `#F7F9FB` / Text `#1D252C` / Subtext `#667784` / White `#FFFFFF`。
+
+## クラウド環境
+
+既存の `/workspace/construction-sales-template` を使用します。タスクは隔離されているため追加の Git worktree は不要です。npm の既定キャッシュが書き込み不可の場合は `npm --cache /tmp/construction-npm-cache ci` を使用してください。Astro のユーザー設定ディレクトリが書き込み不可の場合は以下のように実行します。
+
+```sh
+export ASTRO_TELEMETRY_DISABLED=1
+npm run check
+npm run build
+npm run dev -- --host 0.0.0.0
+```
+
+実行中のサーバーは新しいタスクへ引き継がれません。必要時に起動してください。

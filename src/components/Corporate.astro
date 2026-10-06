@@ -1,0 +1,4 @@
+---
+import { company } from '../data/company';
+---
+<section class="section corporate" aria-labelledby="corporate-title"><p class="eyebrow">FOR BUSINESS</p><h2 id="corporate-title" class="pre-line">{company.corporate.heading}</h2><p>対象建物の例</p><ul>{company.corporate.examples.map(example => <li>{example}</li>)}</ul><p class="corporate-note">上記は対象建物の例であり、施工実績を示すものではありません。</p></section>

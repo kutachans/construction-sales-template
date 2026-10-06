@@ -1,5 +1,0 @@
----
-import { company, contact } from '../data/company';
-const phoneHref = contact.phone ? `tel:${contact.phone.replace(/[^+\d]/g, '')}` : null;
----
-<section id="contact" class="section contact" aria-labelledby="contact-title"><p class="eyebrow">LET’S TALK</p><h2 id="contact-title">気になることから、<br />お聞かせください。</h2><p>雨漏りや防水工事のご相談など、<br />建物の状況に合わせてご案内します。</p><div class="contact-actions">{phoneHref && <a class="button button-light" href={phoneHref}>電話で相談する：{contact.phone}</a>}{contact.email && <a class="button button-light" href={`mailto:${contact.email}`}>メールで相談する ↗</a>}{!phoneHref && !contact.email && <p class="contact-note">このサイトはサンプルです。お問い合わせ先は準備中です。</p>}</div><small>{company.businessHours}</small></section>

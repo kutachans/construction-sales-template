@@ -2,56 +2,55 @@ export interface Company {
   name: string;
   englishName: string;
   tagline: string;
+  lead: string;
   description: string;
+  heroDescription: string;
   area: string;
   address: string;
-  businessHours: string;
+  businessHours: string | null;
   contact: { phone: string | null; email: string | null };
+  demoNotice: string;
+  heroImage: { src: string; alt: string } | null;
+  trust: { label: string; text: string }[];
   services: { title: string; description: string; label: string }[];
-  strengths: { title: string; description: string }[];
-  projects: { title: string; category: string; description: string; image: string; alt: string }[];
-  steps: { title: string; description: string }[];
-  faqs: { question: string; answer: string }[];
+  works: { title: string; category: string; description: string; location: string; image: { src: string; alt: string } | null }[];
+  problems: string[];
+  corporate: { heading: string; examples: string[] };
+  contactCta: string;
 }
 
-// サンプル情報です。公開前に実在する会社情報・実績・連絡先へ差し替えてください。
-// 未設定の連絡先にはリンクを表示しません。
-export const company = {
-  name: '青葉防水工業',
-  englishName: 'AOBA WATERPROOFING',
-  tagline: '雨から守る。\n暮らしをつなぐ。',
-  description: '屋上から、ベランダまで。建物の状態に合った防水工事で、日々の安心と建物の未来を支えます。',
-  area: '東京都・神奈川県（サンプル）',
-  address: '会社所在地を設定してください',
-  businessHours: '営業時間を設定してください',
+// 提案用デモ。ユーザー指定の会社情報のみを掲載し、未確認情報は追加しません。
+// 実績・許可情報の出典確認は案件ごとに行ってください。写真や連絡先も創作しません。
+export const company: Company = {
+  name: '有限会社昭和防水工事',
+  englishName: 'SHOWA WATERPROOFING',
+  tagline: '建物を、\n雨から守り続ける。',
+  lead: '防水工事の専門技術で、\n建物の安心を支えます。',
+  description: '防水工事の専門技術で、建物の安心を支えます。東京都福生市を拠点に、法人・施設・住宅の防水工事に対応する専門工事会社です。',
+  heroDescription: '東京都福生市を拠点に\n法人・施設・住宅の防水工事に対応',
+  area: '東京都福生市を拠点に関東エリア',
+  address: '東京都福生市福生2221',
+  businessHours: null,
   contact: { phone: null, email: null },
+  demoNotice: 'Webサイトご提案用のデザインサンプルです。有限会社昭和防水工事様が運営する公式Webサイトではありません。',
+  heroImage: null,
+  trust: [
+    { label: '東京都知事許可', text: '防水工事業' },
+    { label: 'PUBLIC WORKS', text: '公共工事実績' },
+    { label: 'BtoB / BtoC', text: '法人・個人対応' },
+    { label: 'TOKYO FUSSA', text: '福生市を拠点' },
+  ],
   services: [
-    { label: 'ROOFTOP', title: '屋上・陸屋根防水', description: '雨や紫外線の影響を受ける屋上に。下地や既存防水層の状態を確認し、適した工法をご提案します。' },
-    { label: 'BALCONY', title: 'ベランダ・バルコニー防水', description: 'ひび割れや水たまりが気になる場所に。生活への影響にも配慮して、床面と排水まわりを整えます。' },
-    { label: 'SEALING', title: 'シーリング工事', description: '外壁の目地や窓まわりの隙間に。劣化したシーリングを補修し、雨水の浸入を防ぎます。' },
-    { label: 'REPAIR', title: '雨漏り調査・補修', description: '雨漏りの原因を現地で確認。状況をご説明し、必要な補修の範囲と進め方を一緒に検討します。' },
+    { label: 'COATING', title: '塗膜防水', description: '液状の防水材料を塗り重ね、防水層を形成する工法です。' },
+    { label: 'SHEET', title: 'シート防水', description: '防水シートを用いて、建物への雨水の浸入を防ぐ工法です。' },
+    { label: 'ASPHALT', title: 'アスファルト防水', description: 'アスファルト系の防水材料を重ねて、防水層を形成する工法です。' },
+    { label: 'SEALING', title: 'シーリング工事', description: '外壁の目地や接合部などにシーリング材を充填する工事です。' },
   ],
-  strengths: [
-    { title: '建物に合う工法を選ぶ', description: 'ウレタン・シート・FRPなど、下地や用途に合わせた工法を検討します。' },
-    { title: 'わかりやすく説明する', description: '現状、工事内容、費用の内訳をお伝えし、ご納得いただいてから進めます。' },
-    { title: '工事後も相談できる', description: '完了時の確認から、その後のメンテナンスのご相談まで対応します。' },
+  works: [
+    { title: 'かえで会館', category: 'PUBLIC WORKS', description: '外壁及び屋上防水改良工事', location: '東京都福生市', image: null },
   ],
-  projects: [
-    { title: 'マンション屋上の防水改修', category: '屋上防水 / サンプル', description: '既存防水層を確認し、下地処理から仕上げまでを行う施工例です。', image: '/images/roof.svg', alt: '屋上防水のイメージイラスト。実際の施工写真ではありません' },
-    { title: '戸建てバルコニーの床面補修', category: 'バルコニー防水 / サンプル', description: '床面の劣化や排水まわりの状態に合わせた補修の施工例です。', image: '/images/balcony.svg', alt: 'バルコニー防水のイメージイラスト。実際の施工写真ではありません' },
-  ],
-  steps: [
-    { title: 'お問い合わせ', description: '気になる症状や建物の状況をお聞かせください。' },
-    { title: '現地確認・ご提案', description: '現地の状態を確認し、工法・工期・お見積もりをご説明します。' },
-    { title: 'ご契約・施工', description: '内容にご納得いただいたうえで、日程を調整して工事を進めます。' },
-    { title: '完了確認・アフターケア', description: '仕上がりをご確認いただき、メンテナンス方法をご案内します。' },
-  ],
-  faqs: [
-    { question: 'どのような症状があれば相談すべきですか？', answer: '天井の染み、床面のひび割れ、防水層の膨れ、水たまりなどが目安です。気になる変化があればご相談ください。' },
-    { question: '工事期間はどれくらいかかりますか？', answer: '面積や工法、下地の状態によって異なります。天候による影響も含め、現地確認後に予定をご案内します。' },
-    { question: '住みながら工事できますか？', answer: '可能な場合が多いですが、施工場所や工法によって利用を制限する期間があります。事前に生活への影響をご説明します。' },
-    { question: '見積もりの前に準備するものはありますか？', answer: '建物の図面や過去の工事記録があればご用意ください。お手元にない場合も、まずはご相談いただけます。' },
-  ],
-} satisfies Company;
-
-export const contact = company.contact as Company['contact'];
+  problems: ['屋上やベランダのひび割れ', '防水層の浮き', '雨漏り', '外壁目地の劣化', '以前の防水工事から年数が経っている'],
+  corporate: { heading: '法人・管理会社・施設の\n防水工事にも対応します。', examples: ['ビル', 'マンション', '工場', '店舗', '事業所', '公共施設'] },
+  contactCta: '防水工事について相談する',
+};
+export const contact = company.contact;

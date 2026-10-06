@@ -1,0 +1,4 @@
+---
+import { company, contact } from '../data/company';
+---
+<section id="company" class="section about" aria-labelledby="company-title"><div><p class="eyebrow">COMPANY</p><h2 id="company-title">会社情報</h2></div><dl><div><dt>会社名</dt><dd>{company.name}</dd></div><div><dt>所在地</dt><dd>{company.address}</dd></div><div><dt>対応エリア</dt><dd>{company.area}</dd></div>{company.businessHours && <div><dt>営業時間</dt><dd>{company.businessHours}</dd></div>}{contact.phone && <div><dt>電話番号</dt><dd>{contact.phone}</dd></div>}{contact.email && <div><dt>メール</dt><dd>{contact.email}</dd></div>}</dl></section>

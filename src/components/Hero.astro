@@ -1,8 +1,4 @@
 ---
 import { company } from '../data/company';
 ---
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero-copy"><p class="eyebrow">BUILDING TRUST, KEEPING DRY.</p><h1 id="hero-title">{company.tagline}</h1><p class="hero-description">{company.description}</p><a class="button" href="#contact">建物のお悩みを相談する <span aria-hidden="true">↗</span></a><p class="hero-area">対応エリア：{company.area}</p></div>
-  <div class="hero-visual"><img src="/images/roof.svg" alt="建物の屋上を描いた防水工事のイメージイラスト" width="900" height="680" fetchpriority="high" /><span class="visual-caption">守る仕事が、未来をつくる。</span></div>
-  <div class="hero-bottom"><span>WATERPROOFING &amp; MAINTENANCE</span><a href="#services">SCROLL DOWN ↓</a></div>
-</section>
+<section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow">{company.englishName}</p><h1 id="hero-title">{company.tagline}</h1><p class="hero-lead">{company.lead}</p><p class="hero-description">{company.heroDescription}</p><a class="button" href="#contact">{company.contactCta} <span aria-hidden="true">↗</span></a><p class="demo-label">WEB DESIGN PROPOSAL / ご提案用デモ</p></div><div class="hero-visual">{company.heroImage ? <img src={company.heroImage.src} alt={company.heroImage.alt} width="1200" height="900" fetchpriority="high" /> : <div class="photo-placeholder"><span aria-hidden="true" class="photo-grid"></span><span class="placeholder-copy"><strong>CONSTRUCTION PHOTO</strong><small>施工写真掲載予定 / 写真未設定</small></span></div>}</div><div class="hero-bottom"><span>WATERPROOFING</span><a href="#about">SCROLL DOWN ↓</a></div></section>

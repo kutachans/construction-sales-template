@@ -1,0 +1,4 @@
+---
+import { company } from '../data/company';
+---
+<section id="works" class="section" aria-labelledby="works-title"><div class="section-heading"><div><p class="eyebrow">WORKS</p><h2 id="works-title">施工実績</h2></div><p>掲載写真は準備中です。</p></div><div class="project-grid">{company.works.map(work => <article class="project-card">{work.image ? <img src={work.image.src} alt={work.image.alt} width="900" height="680" loading="lazy" /> : <div class="work-placeholder"><span>PHOTO COMING SOON</span><small>施工写真未掲載</small></div>}<p class="eyebrow">{work.category}</p><h3>{work.title}</h3><p>{work.description}<br /><span class="subtext">{work.location}</span></p></article>)}<article class="project-card coming-soon" aria-label="追加実績は準備中"><div class="work-placeholder"><span>COMING SOON</span></div><h3>COMING SOON</h3></article></div></section>

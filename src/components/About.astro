@@ -1,4 +1,4 @@
 ---
 import { company } from '../data/company';
 ---
-<section id="about" class="section about" aria-labelledby="about-title"><div><p class="eyebrow">ABOUT US</p><h2 id="about-title">地域の建物と、<br />ともに歩む。</h2><p>防水工事を通じて、暮らしと事業の場を守ります。</p></div><dl><div><dt>会社名</dt><dd>{company.name}（サンプル）</dd></div><div><dt>所在地</dt><dd>{company.address}</dd></div><div><dt>対応エリア</dt><dd>{company.area}</dd></div><div><dt>営業時間</dt><dd>{company.businessHours}</dd></div></dl></section>
+<section id="about" class="section about-intro" aria-labelledby="about-title"><div><p class="eyebrow">ABOUT US</p><h2 id="about-title" class="pre-line">{company.lead}</h2></div><p>{company.description}</p></section>

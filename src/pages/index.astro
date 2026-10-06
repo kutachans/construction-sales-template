@@ -1,18 +1,17 @@
 ---
 import { company } from '../data/company';
+import DemoLayout from '../layouts/DemoLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import Services from '../components/Services.astro';
-import Strengths from '../components/Strengths.astro';
-import Projects from '../components/Projects.astro';
-import Process from '../components/Process.astro';
-import Faq from '../components/Faq.astro';
+import Trust from '../components/Trust.astro';
 import About from '../components/About.astro';
-import Contact from '../components/Contact.astro';
+import Services from '../components/Services.astro';
+import Works from '../components/Works.astro';
+import Problems from '../components/Problems.astro';
+import Corporate from '../components/Corporate.astro';
+import Area from '../components/Area.astro';
+import Company from '../components/Company.astro';
+import ContactCTA from '../components/ContactCTA.astro';
 import Footer from '../components/Footer.astro';
-import '../styles/global.scss';
-const title = `${company.name} | 防水工事・雨漏り補修`;
-const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
-<!doctype html>
-<html lang="ja"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content={company.description} /><meta name="theme-color" content="#173e35" /><link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="canonical" href={canonical} /><meta property="og:type" content="website" /><meta property="og:title" content={title} /><meta property="og:description" content={company.description} /><meta property="og:url" content={canonical} /><meta property="og:locale" content="ja_JP" /><title>{title}</title></head><body id="top"><a class="skip-link" href="#main">本文へスキップ</a><Header /><main id="main"><Hero /><Services /><Strengths /><Projects /><Process /><Faq /><About /><Contact /></main><Footer /></body></html>
+<DemoLayout title={`${company.name} | Webサイトご提案用デモ`}><Header /><main id="main"><Hero /><Trust /><About /><Services /><Works /><Problems /><Corporate /><Area /><Company /><ContactCTA /></main><Footer /></DemoLayout>

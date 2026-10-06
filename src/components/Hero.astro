@@ -1,0 +1,8 @@
+---
+import { company } from '../data/company';
+---
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-copy"><p class="eyebrow">BUILDING TRUST, KEEPING DRY.</p><h1 id="hero-title">{company.tagline}</h1><p class="hero-description">{company.description}</p><a class="button" href="#contact">建物のお悩みを相談する <span aria-hidden="true">↗</span></a><p class="hero-area">対応エリア：{company.area}</p></div>
+  <div class="hero-visual"><img src="/images/roof.svg" alt="建物の屋上を描いた防水工事のイメージイラスト" width="900" height="680" fetchpriority="high" /><span class="visual-caption">守る仕事が、未来をつくる。</span></div>
+  <div class="hero-bottom"><span>WATERPROOFING &amp; MAINTENANCE</span><a href="#services">SCROLL DOWN ↓</a></div>
+</section>

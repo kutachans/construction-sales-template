@@ -1,0 +1,4 @@
+---
+import { company } from '../data/company';
+---
+<section id="services" class="section" aria-labelledby="services-title"><div class="section-heading"><div><p class="eyebrow">OUR SERVICES</p><h2 id="services-title">建物の「困った」に、<br />確かな手仕事を。</h2></div><p>小さな補修から防水改修まで。<br />建物の状態とご要望に合わせてご提案します。</p></div><div class="service-grid">{company.services.map((service, i) => <article class="service-card"><div class="card-top"><span class="number">0{i + 1}</span><span class="eyebrow">{service.label}</span></div><h3>{service.title}</h3><p>{service.description}</p><a href="#contact" aria-label={`${service.title}について相談する`}>相談する <span aria-hidden="true">↗</span></a></article>)}</div></section>

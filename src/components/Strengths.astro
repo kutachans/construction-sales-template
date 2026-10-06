@@ -1,0 +1,4 @@
+---
+import { company } from '../data/company';
+---
+<section class="section strengths" aria-labelledby="strengths-title"><div><p class="eyebrow">OUR PROMISE</p><h2 id="strengths-title">見えないところまで、<br />誠実に。</h2><p>長く安心して使える建物のために。<br />一つひとつの工程を大切にします。</p></div><div class="promise-list">{company.strengths.map((strength, i) => <article><span class="number">0{i + 1}</span><div><h3>{strength.title}</h3><p>{strength.description}</p></div></article>)}</div></section>
